@@ -1,11 +1,11 @@
-  // @ts-nocheck
+// @ts-nocheck
 import type { NextAuthConfig } from "next-auth"
 import { NextResponse } from "next/server"
 
 export const authConfig = {
     providers: [],
     callbacks: {
-        authorized({ request, auth }: any) {
+        authorized({ request, auth }: unknown) {
                 const protectedPaths = [
                   /\/shipping/,
                   /\/payment/,
