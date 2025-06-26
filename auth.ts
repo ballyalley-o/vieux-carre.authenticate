@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+  /* eslint-disable @typescript-eslint/ban-ts-comment */
 /**
  * NOTE: This file depends on path aliases and modules provided by the consuming/host app.
  * It is not intended to be compiled standalone. All imports below are expected to be resolved
@@ -90,8 +91,8 @@ export const config             = {
           dbUser = await prisma.user.create({
             data: {
               email: user.email!,
-              name: user.name ?? user.email!.split('@')[0],
-              role: 'user'
+              name : user.name ?? user.email!.split('@')[0],
+              role : user.role
             }
           })
         }
@@ -108,10 +109,10 @@ export const config             = {
           const cookiesObject = await cookies()
           const sessionBagId  = cookiesObject.get(KEY.SESSION_BAG_ID)?.value
           if (sessionBagId) {
-            const sessionBag = await prisma.bag.findFirst({ where: { id: sessionBagId }})
+            const sessionBag = await prisma.bag.findFirst({ where: { id: sessionBagId } })
             if (sessionBag && !sessionBag.userId) {
-              await prisma.bag.deleteMany({ where: { userId: dbUser.id }})
-              await prisma.bag.update({ where: { id: sessionBag.id }, data: { userId: dbUser.id }})
+              await prisma.bag.deleteMany({ where: { userId: dbUser.id } })
+              await prisma.bag.update({ where: { id: sessionBag.id }, data: { userId: dbUser.id } })
             }
           }
         }
