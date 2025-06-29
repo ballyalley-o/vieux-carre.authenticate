@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-  /* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * NOTE: This file depends on path aliases and modules provided by the consuming/host app.
  * It is not intended to be compiled standalone. All imports below are expected to be resolved
  * by the parent app's tsconfig.json or equivalent module resolution.
  */
-  // @ts-nocheck
 import { GLOBAL } from 'vieux-carre'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -51,11 +49,7 @@ export const config             = {
       },
       async authorize(credentials) {
         if (credentials === null) return null
-        const user = await prisma.user.findFirst({
-          where: {
-            email: credentials.email as string
-          }
-        })
+        const user = await prisma.user.findFirst({ where: { email: credentials.email as string }})
         if (user && user.password) {
           const isMatch = await compare(credentials.password as string, user.password)
           if (isMatch) {
@@ -72,17 +66,24 @@ export const config             = {
     })
   ],
   callbacks: {
-    async session({ session, user, trigger, token }: unknown) {
-      session.user.id   = token.sub
-      session.user.role = token.role
-      session.user.name = token.name
+    async session({ session, user, trigger, token }: any) {
+      session.user = {
+        ...CredentialsProvider(session.user || {}),
+        id   : token.sub,
+        role : token.role,
+        name : token.name,
+        email: token.email,
+        image: token.picture
+      }
+
       if (trigger === 'update') {
         session.user.name = user.name
       }
+      // console.log('session: ', session)
       return session
     },
 
-    async jwt({ token, user, trigger, session }: unknown) {
+    async jwt({ token, user, trigger, session }: any) {
       if (user) {
         let dbUser = await prisma.user.findUnique({
           where: { email: user.email! }
@@ -92,7 +93,7 @@ export const config             = {
             data: {
               email: user.email!,
               name : user.name ?? user.email!.split('@')[0],
-              role : user.role
+              role : 'user'
             }
           })
         }
