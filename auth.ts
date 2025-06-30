@@ -4,7 +4,6 @@
  * It is not intended to be compiled standalone. All imports below are expected to be resolved
  * by the parent app's tsconfig.json or equivalent module resolution.
  */
-import { GLOBAL } from 'vieux-carre'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
@@ -15,7 +14,7 @@ import { KEY } from 'lib/constant'
 import { authConfig } from './auth.config'
 
 export type SessionStrategyType = 'jwt' | 'database' | undefined
-export const ENVIRONMENT        = GLOBAL.NODE_ENV
+export const ENVIRONMENT        = process.env.NODE_ENV
 export const config             = {
   pages: {
     signIn: '/sign-in',
@@ -39,8 +38,8 @@ export const config             = {
   },
   providers: [
     GoogleProvider({
-      clientId    : GLOBAL.GOOGLE.CLIENT_ID,
-      clientSecret: GLOBAL.GOOGLE.CLIENT_SECRET
+      clientId    : process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }),
     CredentialsProvider({
       credentials: {
