@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/**
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  /**
  * NOTE: This file depends on path aliases and modules provided by the consuming/host app.
  * It is not intended to be compiled standalone. All imports below are expected to be resolved
  * by the parent app's tsconfig.json or equivalent module resolution.
@@ -9,7 +9,7 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import { cookies } from 'next/headers'
-import { compare } from 'lib/encrypt'
+import bcrypt from 'bcryptjs'
 import { prisma } from 'db/prisma'
 import { KEY } from 'lib/constant'
 import { authConfig } from './auth.config'
@@ -48,20 +48,25 @@ export const config             = {
         password: { type: 'password' }
       },
       async authorize(credentials) {
-        if (credentials === null) return null
-        const user = await prisma.user.findFirst({ where: { email: credentials.email as string }})
-        if (user && user.password) {
-          const isMatch = await compare(credentials.password as string, user.password)
-          if (isMatch) {
-            return {
-              id   : user.id,
-              name : user.name,
-              email: user.email,
-              role : user.role
+        try {
+          if (credentials === null) return null
+          const user = await prisma.user.findFirst({ where: { email: credentials.email as string } })
+          if (user && user.password) {
+            const isMatch = await bcrypt.compare(credentials.password as string, user.password)
+            if (isMatch) {
+              return {
+                id   : user.id,
+                name : user.name,
+                email: user.email,
+                role : user.role
+              }
             }
           }
-        }
-        return null
+          return null
+       } catch (error) {
+          console.error(error)
+          return null
+       }
       }
     })
   ],
@@ -79,7 +84,6 @@ export const config             = {
       if (trigger === 'update') {
         session.user.name = user.name
       }
-      // console.log('session: ', session)
       return session
     },
 
