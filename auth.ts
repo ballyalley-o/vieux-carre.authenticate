@@ -30,7 +30,7 @@ export const config             = {
       options: {
         domain  : ENVIRONMENT === 'production' ? '.vieuxcarre.app': undefined,
         path    : '/',
-        sameSite: 'lax' as const,
+        sameSite: 'none' as const,
         httpOnly: true,
         secure  : ENVIRONMENT === 'production'
       }
