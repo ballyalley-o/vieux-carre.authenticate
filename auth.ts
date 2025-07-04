@@ -16,7 +16,8 @@ import { authConfig } from './auth.config'
 export type SessionStrategyType = 'jwt' | 'database' | undefined
 export const ENVIRONMENT        = process.env.NODE_ENV
 export const config             = {
-  pages: {
+  secret: process.env.NEXTAUTH_SECRET,
+  pages : {
     signIn: '/sign-in',
     error : '/sign-in'
   },
