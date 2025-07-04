@@ -71,6 +71,14 @@ export const config             = {
     })
   ],
   callbacks: {
+    async redirect({ url, baseUrl }: { url: string, baseUrl: string }) {
+      const allowedHosts = ['vieuxcarre.app', 'support.vieuxcarre.app']
+      const parsed       = new URL(url)
+      if (allowedHosts.includes(parsed.hostname)) {
+        return url
+      }
+      return baseUrl
+    },
     async session({ session, user, trigger, token }: any) {
       session.user = {
         ...CredentialsProvider(session.user || {}),
