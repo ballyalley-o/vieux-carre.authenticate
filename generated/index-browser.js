@@ -148,7 +148,10 @@ exports.Prisma.UserScalarFieldEnum = {
   address: 'address',
   paymentMethod: 'paymentMethod',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  failedSignInAttempts: 'failedSignInAttempts',
+  isBlocked: 'isBlocked',
+  lastFailedAttempt: 'lastFailedAttempt'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {

@@ -3233,8 +3233,18 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    failedSignInAttempts: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    failedSignInAttempts: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -3248,6 +3258,9 @@ export namespace Prisma {
     paymentMethod: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    failedSignInAttempts: number | null
+    isBlocked: boolean | null
+    lastFailedAttempt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -3261,6 +3274,9 @@ export namespace Prisma {
     paymentMethod: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    failedSignInAttempts: number | null
+    isBlocked: boolean | null
+    lastFailedAttempt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -3275,9 +3291,20 @@ export namespace Prisma {
     paymentMethod: number
     createdAt: number
     updatedAt: number
+    failedSignInAttempts: number
+    isBlocked: number
+    lastFailedAttempt: number
     _all: number
   }
 
+
+  export type UserAvgAggregateInputType = {
+    failedSignInAttempts?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    failedSignInAttempts?: true
+  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -3290,6 +3317,9 @@ export namespace Prisma {
     paymentMethod?: true
     createdAt?: true
     updatedAt?: true
+    failedSignInAttempts?: true
+    isBlocked?: true
+    lastFailedAttempt?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -3303,6 +3333,9 @@ export namespace Prisma {
     paymentMethod?: true
     createdAt?: true
     updatedAt?: true
+    failedSignInAttempts?: true
+    isBlocked?: true
+    lastFailedAttempt?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -3317,6 +3350,9 @@ export namespace Prisma {
     paymentMethod?: true
     createdAt?: true
     updatedAt?: true
+    failedSignInAttempts?: true
+    isBlocked?: true
+    lastFailedAttempt?: true
     _all?: true
   }
 
@@ -3358,6 +3394,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -3388,6 +3436,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -3404,7 +3454,12 @@ export namespace Prisma {
     paymentMethod: string | null
     createdAt: Date
     updatedAt: Date
+    failedSignInAttempts: number
+    isBlocked: boolean
+    lastFailedAttempt: Date | null
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -3435,6 +3490,9 @@ export namespace Prisma {
     paymentMethod?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    failedSignInAttempts?: boolean
+    isBlocked?: boolean
+    lastFailedAttempt?: boolean
     account?: boolean | User$accountArgs<ExtArgs>
     Session?: boolean | User$SessionArgs<ExtArgs>
     Bag?: boolean | User$BagArgs<ExtArgs>
@@ -3457,6 +3515,9 @@ export namespace Prisma {
     paymentMethod?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    failedSignInAttempts?: boolean
+    isBlocked?: boolean
+    lastFailedAttempt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3471,6 +3532,9 @@ export namespace Prisma {
     paymentMethod?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    failedSignInAttempts?: boolean
+    isBlocked?: boolean
+    lastFailedAttempt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -3485,9 +3549,12 @@ export namespace Prisma {
     paymentMethod?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    failedSignInAttempts?: boolean
+    isBlocked?: boolean
+    lastFailedAttempt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "password" | "role" | "address" | "paymentMethod" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "password" | "role" | "address" | "paymentMethod" | "createdAt" | "updatedAt" | "failedSignInAttempts" | "isBlocked" | "lastFailedAttempt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     account?: boolean | User$accountArgs<ExtArgs>
     Session?: boolean | User$SessionArgs<ExtArgs>
@@ -3524,6 +3591,9 @@ export namespace Prisma {
       paymentMethod: string | null
       createdAt: Date
       updatedAt: Date
+      failedSignInAttempts: number
+      isBlocked: boolean
+      lastFailedAttempt: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3965,6 +4035,9 @@ export namespace Prisma {
     readonly paymentMethod: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly failedSignInAttempts: FieldRef<"User", 'Int'>
+    readonly isBlocked: FieldRef<"User", 'Boolean'>
+    readonly lastFailedAttempt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -14679,7 +14752,10 @@ export namespace Prisma {
     address: 'address',
     paymentMethod: 'paymentMethod',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    failedSignInAttempts: 'failedSignInAttempts',
+    isBlocked: 'isBlocked',
+    lastFailedAttempt: 'lastFailedAttempt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -15113,6 +15189,9 @@ export namespace Prisma {
     paymentMethod?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    failedSignInAttempts?: IntFilter<"User"> | number
+    isBlocked?: BoolFilter<"User"> | boolean
+    lastFailedAttempt?: DateTimeNullableFilter<"User"> | Date | string | null
     account?: AccountListRelationFilter
     Session?: SessionListRelationFilter
     Bag?: BagListRelationFilter
@@ -15134,6 +15213,9 @@ export namespace Prisma {
     paymentMethod?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    failedSignInAttempts?: SortOrder
+    isBlocked?: SortOrder
+    lastFailedAttempt?: SortOrderInput | SortOrder
     account?: AccountOrderByRelationAggregateInput
     Session?: SessionOrderByRelationAggregateInput
     Bag?: BagOrderByRelationAggregateInput
@@ -15158,6 +15240,9 @@ export namespace Prisma {
     paymentMethod?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    failedSignInAttempts?: IntFilter<"User"> | number
+    isBlocked?: BoolFilter<"User"> | boolean
+    lastFailedAttempt?: DateTimeNullableFilter<"User"> | Date | string | null
     account?: AccountListRelationFilter
     Session?: SessionListRelationFilter
     Bag?: BagListRelationFilter
@@ -15179,9 +15264,14 @@ export namespace Prisma {
     paymentMethod?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    failedSignInAttempts?: SortOrder
+    isBlocked?: SortOrder
+    lastFailedAttempt?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -15199,6 +15289,9 @@ export namespace Prisma {
     paymentMethod?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    failedSignInAttempts?: IntWithAggregatesFilter<"User"> | number
+    isBlocked?: BoolWithAggregatesFilter<"User"> | boolean
+    lastFailedAttempt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type AccountWhereInput = {
@@ -15991,6 +16084,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
@@ -16012,6 +16108,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
@@ -16033,6 +16132,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
@@ -16054,6 +16156,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
@@ -16075,6 +16180,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -16089,6 +16197,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -16103,6 +16214,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AccountCreateInput = {
@@ -17176,6 +17290,13 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    failedSignInAttempts?: SortOrder
+    isBlocked?: SortOrder
+    lastFailedAttempt?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    failedSignInAttempts?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -17189,6 +17310,9 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    failedSignInAttempts?: SortOrder
+    isBlocked?: SortOrder
+    lastFailedAttempt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -17202,6 +17326,13 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    failedSignInAttempts?: SortOrder
+    isBlocked?: SortOrder
+    lastFailedAttempt?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    failedSignInAttempts?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19327,6 +19458,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
     Order?: OrderCreateNestedManyWithoutUserInput
@@ -19347,6 +19481,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
     Order?: OrderUncheckedCreateNestedManyWithoutUserInput
@@ -19383,6 +19520,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
     Order?: OrderUpdateManyWithoutUserNestedInput
@@ -19403,6 +19543,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
     Order?: OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -19423,6 +19566,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
     Order?: OrderCreateNestedManyWithoutUserInput
@@ -19443,6 +19589,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
     Order?: OrderUncheckedCreateNestedManyWithoutUserInput
@@ -19479,6 +19628,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
     Order?: OrderUpdateManyWithoutUserNestedInput
@@ -19499,6 +19651,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
     Order?: OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -19519,6 +19674,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
@@ -19539,6 +19697,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
@@ -19575,6 +19736,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
@@ -19595,6 +19759,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
@@ -19615,6 +19782,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Order?: OrderCreateNestedManyWithoutUserInput
@@ -19635,6 +19805,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Order?: OrderUncheckedCreateNestedManyWithoutUserInput
@@ -19671,6 +19844,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Order?: OrderUpdateManyWithoutUserNestedInput
@@ -19691,6 +19867,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Order?: OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -19711,6 +19890,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
@@ -19731,6 +19913,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
@@ -19795,6 +19980,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
@@ -19815,6 +20003,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
@@ -20064,6 +20255,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
@@ -20084,6 +20278,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
@@ -20167,6 +20364,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
@@ -20187,6 +20387,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
@@ -20207,6 +20410,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountCreateNestedManyWithoutUserInput
     Session?: SessionCreateNestedManyWithoutUserInput
     Bag?: BagCreateNestedManyWithoutUserInput
@@ -20227,6 +20433,9 @@ export namespace Prisma {
     paymentMethod?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    failedSignInAttempts?: number
+    isBlocked?: boolean
+    lastFailedAttempt?: Date | string | null
     account?: AccountUncheckedCreateNestedManyWithoutUserInput
     Session?: SessionUncheckedCreateNestedManyWithoutUserInput
     Bag?: BagUncheckedCreateNestedManyWithoutUserInput
@@ -20263,6 +20472,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUpdateManyWithoutUserNestedInput
     Session?: SessionUpdateManyWithoutUserNestedInput
     Bag?: BagUpdateManyWithoutUserNestedInput
@@ -20283,6 +20495,9 @@ export namespace Prisma {
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    failedSignInAttempts?: IntFieldUpdateOperationsInput | number
+    isBlocked?: BoolFieldUpdateOperationsInput | boolean
+    lastFailedAttempt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     account?: AccountUncheckedUpdateManyWithoutUserNestedInput
     Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
     Bag?: BagUncheckedUpdateManyWithoutUserNestedInput
