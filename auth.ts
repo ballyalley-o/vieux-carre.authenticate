@@ -4,12 +4,14 @@
  * It is not intended to be compiled standalone. All imports below are expected to be resolved
  * by the parent app's tsconfig.json or equivalent module resolution.
  */
+import { CACHE_KEY } from 'config/cache.config'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import { cookies } from 'next/headers'
 import bcrypt from 'bcryptjs'
 import { prisma } from 'db/prisma'
+import { invalidateCache } from 'lib/cache'
 import { KEY } from 'lib/constant'
 import { authConfig } from './auth.config'
 
@@ -126,6 +128,7 @@ export const config             = {
             if (sessionBag && !sessionBag.userId) {
               await prisma.bag.deleteMany({ where: { userId: dbUser.id } })
               await prisma.bag.update({ where: { id: sessionBag.id }, data: { userId: dbUser.id } })
+              await invalidateCache(CACHE_KEY.myBagId(sessionBagId))
             }
           }
         }
