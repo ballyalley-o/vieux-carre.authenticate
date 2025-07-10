@@ -320,7 +320,8 @@ exports.PromotionType = exports.$Enums.PromotionType = {
   EMAIL: 'EMAIL',
   SWIPER: 'SWIPER',
   CAROUSEL: 'CAROUSEL',
-  ANNOUNCEMENT: 'ANNOUNCEMENT'
+  ANNOUNCEMENT: 'ANNOUNCEMENT',
+  DOTM: 'DOTM'
 };
 
 exports.Prisma.ModelName = {

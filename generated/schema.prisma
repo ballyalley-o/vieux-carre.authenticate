@@ -193,6 +193,7 @@ enum PromotionType {
   SWIPER       @map("swiper")
   CAROUSEL     @map("carousel")
   ANNOUNCEMENT @map("announcement")
+  DOTM         @map("dotm")
 }
 
 model Promotion {

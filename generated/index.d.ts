@@ -103,7 +103,8 @@ export const PromotionType: {
   EMAIL: 'EMAIL',
   SWIPER: 'SWIPER',
   CAROUSEL: 'CAROUSEL',
-  ANNOUNCEMENT: 'ANNOUNCEMENT'
+  ANNOUNCEMENT: 'ANNOUNCEMENT',
+  DOTM: 'DOTM'
 };
 
 export type PromotionType = (typeof PromotionType)[keyof typeof PromotionType]
