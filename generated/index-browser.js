@@ -253,6 +253,25 @@ exports.Prisma.TicketScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.PromotionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  image: 'image',
+  type: 'type',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  isActive: 'isActive',
+  link: 'link',
+  priority: 'priority',
+  discountPercentage: 'discountPercentage',
+  discountAmount: 'discountAmount',
+  productId: 'productId',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -295,6 +314,15 @@ exports.TicketPriority = exports.$Enums.TicketPriority = {
   LOW: 'LOW'
 };
 
+exports.PromotionType = exports.$Enums.PromotionType = {
+  BANNER: 'BANNER',
+  POPUP: 'POPUP',
+  EMAIL: 'EMAIL',
+  SWIPER: 'SWIPER',
+  CAROUSEL: 'CAROUSEL',
+  ANNOUNCEMENT: 'ANNOUNCEMENT'
+};
+
 exports.Prisma.ModelName = {
   Product: 'Product',
   User: 'User',
@@ -306,7 +334,8 @@ exports.Prisma.ModelName = {
   Order: 'Order',
   OrderItem: 'OrderItem',
   Review: 'Review',
-  Ticket: 'Ticket'
+  Ticket: 'Ticket',
+  Promotion: 'Promotion'
 };
 
 /**
