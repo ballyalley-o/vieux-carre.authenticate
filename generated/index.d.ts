@@ -15131,7 +15131,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
-    image: string
+    image: string | null
     type: $Enums.PromotionType
     startDate: Date
     endDate: Date
@@ -15271,7 +15271,7 @@ export namespace Prisma {
       id: string
       title: string
       content: string
-      image: string
+      image: string | null
       type: $Enums.PromotionType
       startDate: Date
       endDate: Date
@@ -17445,7 +17445,7 @@ export namespace Prisma {
     id?: UuidFilter<"Promotion"> | string
     title?: StringFilter<"Promotion"> | string
     content?: StringFilter<"Promotion"> | string
-    image?: StringFilter<"Promotion"> | string
+    image?: StringNullableFilter<"Promotion"> | string | null
     type?: EnumPromotionTypeFilter<"Promotion"> | $Enums.PromotionType
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
@@ -17466,7 +17466,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     type?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
@@ -17490,7 +17490,7 @@ export namespace Prisma {
     NOT?: PromotionWhereInput | PromotionWhereInput[]
     title?: StringFilter<"Promotion"> | string
     content?: StringFilter<"Promotion"> | string
-    image?: StringFilter<"Promotion"> | string
+    image?: StringNullableFilter<"Promotion"> | string | null
     type?: EnumPromotionTypeFilter<"Promotion"> | $Enums.PromotionType
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
@@ -17511,7 +17511,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     type?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
@@ -17538,7 +17538,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"Promotion"> | string
     title?: StringWithAggregatesFilter<"Promotion"> | string
     content?: StringWithAggregatesFilter<"Promotion"> | string
-    image?: StringWithAggregatesFilter<"Promotion"> | string
+    image?: StringNullableWithAggregatesFilter<"Promotion"> | string | null
     type?: EnumPromotionTypeWithAggregatesFilter<"Promotion"> | $Enums.PromotionType
     startDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
@@ -18523,7 +18523,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -18542,7 +18542,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -18561,7 +18561,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18580,7 +18580,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18599,7 +18599,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -18618,7 +18618,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18635,7 +18635,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21011,7 +21011,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -21029,7 +21029,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -21135,7 +21135,7 @@ export namespace Prisma {
     id?: UuidFilter<"Promotion"> | string
     title?: StringFilter<"Promotion"> | string
     content?: StringFilter<"Promotion"> | string
-    image?: StringFilter<"Promotion"> | string
+    image?: StringNullableFilter<"Promotion"> | string | null
     type?: EnumPromotionTypeFilter<"Promotion"> | $Enums.PromotionType
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
@@ -21377,7 +21377,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -21395,7 +21395,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -22960,7 +22960,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -23035,7 +23035,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23053,7 +23053,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23071,7 +23071,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23165,7 +23165,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
-    image: string
+    image?: string | null
     type?: $Enums.PromotionType
     startDate: Date | string
     endDate: Date | string
@@ -23412,7 +23412,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23430,7 +23430,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23448,7 +23448,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumPromotionTypeFieldUpdateOperationsInput | $Enums.PromotionType
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
