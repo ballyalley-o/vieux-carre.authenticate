@@ -76,7 +76,7 @@ export const config             = {
     async redirect({ url, baseUrl }: { url: string, baseUrl: string }) {
       try {
         const fullUrl = url.startsWith('/') ? new URL(url, baseUrl) : new URL(url)
-        const allowedHosts = ['vieuxcarre.app', 'support.vieuxcarre.app', 'localhost']
+        const allowedHosts = ['vieuxcarre.app', 'support.vieuxcarre.app']
 
         if (allowedHosts.includes(fullUrl.hostname)) {
           return fullUrl.toString()
@@ -88,7 +88,6 @@ export const config             = {
     },
     async session({ session, user, trigger, token }: any) {
       session.user = {
-        ...CredentialsProvider(session.user || {}),
         id   : token.sub,
         role : token.role,
         name : token.name,
@@ -116,10 +115,11 @@ export const config             = {
             }
           })
         }
-        token.id   = dbUser.id
-        token.sub  = dbUser.id
-        token.role = dbUser.role
-        token.name = dbUser.name
+        token.id    = dbUser.id
+        token.sub   = dbUser.id
+        token.role  = dbUser.role
+        token.name  = dbUser.name
+        token.email = dbUser.email
         if (dbUser.name === 'NO_NAME') {
           const name = dbUser.email!.split('@')[0]
           await prisma.user.update({ where: { id: dbUser.id }, data: { name } })
