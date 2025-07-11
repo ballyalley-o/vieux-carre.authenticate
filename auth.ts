@@ -74,10 +74,15 @@ export const config             = {
   ],
   callbacks: {
     async redirect({ url, baseUrl }: { url: string, baseUrl: string }) {
-      const allowedHosts = ['vieuxcarre.app', 'support.vieuxcarre.app']
-      const parsed       = new URL(url)
-      if (allowedHosts.includes(parsed.hostname)) {
-        return url
+      try {
+        const fullUrl = url.startsWith('/') ? new URL(url, baseUrl) : new URL(url)
+        const allowedHosts = ['vieuxcarre.app', 'support.vieuxcarre.app', 'localhost']
+
+        if (allowedHosts.includes(fullUrl.hostname)) {
+          return fullUrl.toString()
+        }
+      } catch (error) {
+        console.error('invalid redirect err', url, error)
       }
       return baseUrl
     },
