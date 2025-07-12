@@ -133,6 +133,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   numReviews: 'numReviews',
   stock: 'stock',
   isFeatured: 'isFeatured',
+  isDotm: 'isDotm',
   banner: 'banner',
   createdAt: 'createdAt'
 };

@@ -2134,6 +2134,7 @@ export namespace Prisma {
     numReviews: number | null
     stock: number | null
     isFeatured: boolean | null
+    isDotm: boolean | null
     banner: string | null
     createdAt: Date | null
   }
@@ -2150,6 +2151,7 @@ export namespace Prisma {
     numReviews: number | null
     stock: number | null
     isFeatured: boolean | null
+    isDotm: boolean | null
     banner: string | null
     createdAt: Date | null
   }
@@ -2167,6 +2169,7 @@ export namespace Prisma {
     numReviews: number
     stock: number
     isFeatured: number
+    isDotm: number
     banner: number
     createdAt: number
     _all: number
@@ -2199,6 +2202,7 @@ export namespace Prisma {
     numReviews?: true
     stock?: true
     isFeatured?: true
+    isDotm?: true
     banner?: true
     createdAt?: true
   }
@@ -2215,6 +2219,7 @@ export namespace Prisma {
     numReviews?: true
     stock?: true
     isFeatured?: true
+    isDotm?: true
     banner?: true
     createdAt?: true
   }
@@ -2232,6 +2237,7 @@ export namespace Prisma {
     numReviews?: true
     stock?: true
     isFeatured?: true
+    isDotm?: true
     banner?: true
     createdAt?: true
     _all?: true
@@ -2336,6 +2342,7 @@ export namespace Prisma {
     numReviews: number
     stock: number
     isFeatured: boolean
+    isDotm: boolean
     banner: string | null
     createdAt: Date
     _count: ProductCountAggregateOutputType | null
@@ -2372,6 +2379,7 @@ export namespace Prisma {
     numReviews?: boolean
     stock?: boolean
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: boolean
     createdAt?: boolean
     OrderItem?: boolean | Product$OrderItemArgs<ExtArgs>
@@ -2393,6 +2401,7 @@ export namespace Prisma {
     numReviews?: boolean
     stock?: boolean
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["product"]>
@@ -2410,6 +2419,7 @@ export namespace Prisma {
     numReviews?: boolean
     stock?: boolean
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["product"]>
@@ -2427,11 +2437,12 @@ export namespace Prisma {
     numReviews?: boolean
     stock?: boolean
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: boolean
     createdAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "category" | "description" | "images" | "price" | "brand" | "rating" | "numReviews" | "stock" | "isFeatured" | "banner" | "createdAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "category" | "description" | "images" | "price" | "brand" | "rating" | "numReviews" | "stock" | "isFeatured" | "isDotm" | "banner" | "createdAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     OrderItem?: boolean | Product$OrderItemArgs<ExtArgs>
     Review?: boolean | Product$ReviewArgs<ExtArgs>
@@ -2461,6 +2472,7 @@ export namespace Prisma {
       numReviews: number
       stock: number
       isFeatured: boolean
+      isDotm: boolean
       banner: string | null
       createdAt: Date
     }, ExtArgs["result"]["product"]>
@@ -2901,6 +2913,7 @@ export namespace Prisma {
     readonly numReviews: FieldRef<"Product", 'Int'>
     readonly stock: FieldRef<"Product", 'Int'>
     readonly isFeatured: FieldRef<"Product", 'Boolean'>
+    readonly isDotm: FieldRef<"Product", 'Boolean'>
     readonly banner: FieldRef<"Product", 'String'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
   }
@@ -16186,6 +16199,7 @@ export namespace Prisma {
     numReviews: 'numReviews',
     stock: 'stock',
     isFeatured: 'isFeatured',
+    isDotm: 'isDotm',
     banner: 'banner',
     createdAt: 'createdAt'
   };
@@ -16573,6 +16587,7 @@ export namespace Prisma {
     numReviews?: IntFilter<"Product"> | number
     stock?: IntFilter<"Product"> | number
     isFeatured?: BoolFilter<"Product"> | boolean
+    isDotm?: BoolFilter<"Product"> | boolean
     banner?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     OrderItem?: OrderItemListRelationFilter
@@ -16593,6 +16608,7 @@ export namespace Prisma {
     numReviews?: SortOrder
     stock?: SortOrder
     isFeatured?: SortOrder
+    isDotm?: SortOrder
     banner?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     OrderItem?: OrderItemOrderByRelationAggregateInput
@@ -16616,6 +16632,7 @@ export namespace Prisma {
     numReviews?: IntFilter<"Product"> | number
     stock?: IntFilter<"Product"> | number
     isFeatured?: BoolFilter<"Product"> | boolean
+    isDotm?: BoolFilter<"Product"> | boolean
     banner?: StringNullableFilter<"Product"> | string | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     OrderItem?: OrderItemListRelationFilter
@@ -16636,6 +16653,7 @@ export namespace Prisma {
     numReviews?: SortOrder
     stock?: SortOrder
     isFeatured?: SortOrder
+    isDotm?: SortOrder
     banner?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: ProductCountOrderByAggregateInput
@@ -16661,6 +16679,7 @@ export namespace Prisma {
     numReviews?: IntWithAggregatesFilter<"Product"> | number
     stock?: IntWithAggregatesFilter<"Product"> | number
     isFeatured?: BoolWithAggregatesFilter<"Product"> | boolean
+    isDotm?: BoolWithAggregatesFilter<"Product"> | boolean
     banner?: StringNullableWithAggregatesFilter<"Product"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
   }
@@ -17567,6 +17586,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemCreateNestedManyWithoutProductInput
@@ -17587,6 +17607,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemUncheckedCreateNestedManyWithoutProductInput
@@ -17607,6 +17628,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUpdateManyWithoutProductNestedInput
@@ -17627,6 +17649,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
@@ -17647,6 +17670,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
   }
@@ -17664,6 +17688,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17681,6 +17706,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18787,6 +18813,7 @@ export namespace Prisma {
     numReviews?: SortOrder
     stock?: SortOrder
     isFeatured?: SortOrder
+    isDotm?: SortOrder
     banner?: SortOrder
     createdAt?: SortOrder
   }
@@ -18810,6 +18837,7 @@ export namespace Prisma {
     numReviews?: SortOrder
     stock?: SortOrder
     isFeatured?: SortOrder
+    isDotm?: SortOrder
     banner?: SortOrder
     createdAt?: SortOrder
   }
@@ -18826,6 +18854,7 @@ export namespace Prisma {
     numReviews?: SortOrder
     stock?: SortOrder
     isFeatured?: SortOrder
+    isDotm?: SortOrder
     banner?: SortOrder
     createdAt?: SortOrder
   }
@@ -22294,6 +22323,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     Review?: ReviewCreateNestedManyWithoutProductInput
@@ -22313,6 +22343,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     Review?: ReviewUncheckedCreateNestedManyWithoutProductInput
@@ -22393,6 +22424,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Review?: ReviewUpdateManyWithoutProductNestedInput
@@ -22412,6 +22444,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Review?: ReviewUncheckedUpdateManyWithoutProductNestedInput
@@ -22431,6 +22464,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemCreateNestedManyWithoutProductInput
@@ -22450,6 +22484,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemUncheckedCreateNestedManyWithoutProductInput
@@ -22538,6 +22573,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUpdateManyWithoutProductNestedInput
@@ -22557,6 +22593,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
@@ -22747,6 +22784,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemCreateNestedManyWithoutProductInput
@@ -22766,6 +22804,7 @@ export namespace Prisma {
     numReviews?: number
     stock: number
     isFeatured?: boolean
+    isDotm?: boolean
     banner?: string | null
     createdAt?: Date | string
     OrderItem?: OrderItemUncheckedCreateNestedManyWithoutProductInput
@@ -22854,6 +22893,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUpdateManyWithoutProductNestedInput
@@ -22873,6 +22913,7 @@ export namespace Prisma {
     numReviews?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isDotm?: BoolFieldUpdateOperationsInput | boolean
     banner?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrderItem?: OrderItemUncheckedUpdateManyWithoutProductNestedInput
