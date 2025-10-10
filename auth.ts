@@ -89,11 +89,12 @@ export const config             = {
     },
     async session({ session, user, trigger, token }: any) {
       session.user = {
-        id   : token.sub,
-        role : token.role,
-        name : token.name,
-        email: token.email,
-        image: token.picture
+        id      : token.id,
+        role    : token.role,
+        name    : token.name,
+        email   : token.email,
+        image   : token.picture,
+        provider: token.provider
       }
 
       if (trigger === 'update') {
@@ -102,28 +103,30 @@ export const config             = {
       return session
     },
 
-    async jwt({ token, user, trigger, session }: any) {
+    async jwt({ token, user, trigger, session, account }: any) {
       if (user) {
-        let dbUser = await prisma.user.findUnique({
-          where: { email: user.email! }
-        })
-        if (!dbUser) {
-          dbUser = await prisma.user.create({
+        let newOrExistingUser = await prisma.user.findUnique({ where: { email: user.email! } })
+        if (!newOrExistingUser) {
+          newOrExistingUser = await prisma.user.create({
             data: {
               email: user.email!,
-              name : user.name ?? user.email!.split('@')[0],
-              role : 'user'
+              name: user.name ?? user.email!.split('@')[0],
+              role: 'user'
             }
           })
         }
-        token.id    = dbUser.id
-        token.sub   = dbUser.id
-        token.role  = dbUser.role
-        token.name  = dbUser.name
-        token.email = dbUser.email
-        if (dbUser.name === 'NO_NAME') {
-          const name = dbUser.email!.split('@')[0]
-          await prisma.user.update({ where: { id: dbUser.id }, data: { name } })
+        token.id   = newOrExistingUser.id
+        token.sub  = newOrExistingUser.id
+        token.role = newOrExistingUser.role
+        token.name = newOrExistingUser.name
+
+        if (account) {
+          token.provider = account.provider
+        }
+
+        if (newOrExistingUser.name === 'NO_NAME') {
+          const name = newOrExistingUser.email!.split('@')[0]
+          await prisma.user.update({ where: { id: newOrExistingUser.id }, data: { name } })
           token.name = name
         }
         if ((trigger === 'signIn' || trigger === 'signUp') && user?.id) {
@@ -132,8 +135,8 @@ export const config             = {
           if (sessionBagId) {
             const sessionBag = await prisma.bag.findFirst({ where: { id: sessionBagId } })
             if (sessionBag && !sessionBag.userId) {
-              await prisma.bag.deleteMany({ where: { userId: dbUser.id } })
-              await prisma.bag.update({ where: { id: sessionBag.id }, data: { userId: dbUser.id } })
+              await prisma.bag.deleteMany({ where: { userId: newOrExistingUser.id } })
+              await prisma.bag.update({ where: { id: sessionBag.id }, data: { userId: newOrExistingUser.id } })
               await invalidateCache(CACHE_KEY.myBagId(sessionBagId))
             }
           }
